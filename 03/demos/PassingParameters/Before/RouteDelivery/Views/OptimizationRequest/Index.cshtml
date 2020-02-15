@@ -1,0 +1,46 @@
+﻿@model IEnumerable<RouteDelivery.Models.OptimizationRequest>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Optimization Recurring Jobs</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecurringSchedule)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusText)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecurringSchedule)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusText)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Remove", "Remove", new { id = item.ID }) |
+            @Html.ActionLink("Run Now", "TriggerNow", new { id = item.ID })
+
+        </td>
+    </tr>
+}
+
+</table>
